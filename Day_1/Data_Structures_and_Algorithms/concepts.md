@@ -124,3 +124,7 @@ print max
 
 -   This example could be described as => O(n + n^2), but should be described as O(n^2)
 -   If you compare this runtime to O(n ^ 2) and O(n ^ 2 + n ^ 2), both of these run times can reduce to O(n^2). O(n + n^2) fits logically between them => O(n^2) =< O(n + n^2) =< O(n^2 + n^2). Since (n^2) is larger, we will drop the O(n+n^2)
+
+-   Another example:
+    -   f(n) = 7log(n)^3 + 15n^2 + 2n^3 + 8
+    -   O(f(n)) = O(n^3) because 2n^3 would take the longest computational time for a data set of infinite size

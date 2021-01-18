@@ -2,18 +2,48 @@
 
 // Examples are in Pseudocode
 
+////////////////////////
+// Constant Time: O(1)
 ///////////////////////
-// Linear Time: O(N)
+
+/*
+Examples: 
+
+    a = 1
+    b = 2
+    c = a + 5*b
+    // This runs in Constant Time because it does not depend on (n). Regardless of how big (n) is, it will take the same amount of time to evaluate (c) because the equation doesn't care how big the data set is.
+
+    i = 0
+    while i < 11 Do i = i + 1
+    - This is also done in Constant time because (n) is not involved in this equation. It doesn't matter if the data set, (n), is infinite because the loop only runs while i is less than 11 
+
+*/
+
+///////////////////////
+// Linear Time: O(n)
 ///////////////////////
 
 /* 
-boolean contains(array, x) {
-    for each element in array {
-        if element == x {
-        return true
-        }
-    }
-}
+Examples: 
+
+    i = 0
+    while i < n Do i = i + 1
+
+    - This is Linear because I have to loop through the the data set (n) number of times.
+    - The computation time scales 1:1 with the growth of the data set
+    - f(n) = n
+    - O(f(n)) = O(n)
+
+
+    i = 0
+    while i < n Do i = i + 3
+
+    - Even though I am adding 3 to i each time this is still a linear equation, I just get through the data set 3x faster
+    - f(n) = n/3
+    - O(f(n)) = O(n)
+
+
 */
 
 // This is linear time because the space and time required to complete the algorithm is directly related to how much data there is. N = Size of the array
@@ -30,88 +60,16 @@ boolean contains(array, x) {
 */
 
 ////////////////////////
-// Quadratic Time: O(N^2)
+// Quadric Time: O(N^2)
 ///////////////////////
 
 /*
-void printPairs(array){
-    for each x in array {
-        for each y in array {
-            print x, y
-        }
-    }
-}
+    for(i = 0; i < n; i = i + 1)
+    for(j = 0; j < n; j = j + 1)
+    
+
+
 */
 
 // This will loop through the array and print pair values: (2,5) and (5,2)
 // This will be O(N^2) because the array has N number of elements and it prints N^2 pairs (each pair twice, once as x,y and once as y,x)
-
-////////////////////////////////////////////
-// Four Important rules of Big-O Notation: https://www.youtube.com/watch?v=v4cd1O4zkGw
-///////////////////////////////////////////
-
-// 1. When calculating Big-O, if you have different steps in the algorithm, you add those steps together
-// function something() {
-//     doStep1(); // O(a): ex. run through array1
-//     doStep2(); //O(b): ex. run through array2
-// }
-//The formula would be O(a+b)
-
-// 2.  Drop constants. Remember that the point of Big-O Notation is to find how the algorithm scales, not how it deals with data of a specific size.
-// function minMax1(array){
-//     min, max <= Null
-
-//     foreach(e in array){
-//         min = MIN(e, min)
-//     }
-
-//     foreach(e in array){
-//         max = MAX(e, array)
-//     }
-// }
-
-// function minMax2(array){
-//     min, max <= Null
-//     foreach(e in array){
-//         min = MIN(e, array)
-//         max = MAX(e, array)
-//     }
-// }
-
-// Both of these functions do exactly the same thing (although in a slightly different way). They are both O(n). While it is tempting to write the second function as O(2n), this is WRONG. We drop the constant so it would be O(n). We do not write O(2n) or O(3n), it is always O(n) because Big-O only cares about how it scales, not how many times the data is being run through
-
-// 3.  When using different inputs use different variables. Remember that variables MUST HAVE A MEANING
-
-// const intersectionSize = (arrayA, arrayB)=>{
-//     let count = 0
-//     for(a in arrayA ) {
-//         for( b in arrayB){
-//             if( a == b){
-//                 count = count + 1
-//             }
-//         }
-//     }
-//     return count
-// }
-
-// It would be incorrect to write this as O(n^2) because n doesn't have any meaning. What is n? Which array does it go to? It should be described as O(a X b)
-
-// 4.  Drop non-dominate terms of n
-// const whyWouldIDoThis = (array) => {
-//     max = Null
-//     // O(n) example
-//     foreach(a in array){
-//         max = Math.max(a, max)
-//     }
-//      print max
-
-//     // O(n^2) example
-//     foreach a in array{
-//         foreach b in array{
-//         print a, b
-//         }
-//     }
-// }
-
-// This example could be described as => O(n + n^2), but should be described as O(n^2)
-//  - If you compare this runtime to O(n ^ 2) and O(n ^ 2 + n ^ 2), both of these run times can reduce to O(n^2). O(n + n^2) fits logically between them => O(n^2) =< O(n + n^2) =< O(n^2 + n^2). Since (n^2) is larger, we will drop the O(n+n^2)
