@@ -52,52 +52,75 @@
 
 #### Factorial Time: O(n!)
 
-### Four Important rules of Big-O Notation: https://www.youtube.com/watch?v=v4cd1O4zkGw
+## Four Important rules of Big-O Notation: https://www.youtube.com/watch?v=v4cd1O4zkGw
 
 1.  When calculating Big-O, if you have different steps in the algorithm, you add those steps together
+    function something() {
+    doStep1(); // O(a): ex. run through array1
+    doStep2(); //O(b): ex. run through array2
+    }
 
-    -   function something() {
-        doStep1(ex. run through array1); // O(a)
-        doStep2(ex. run through array2); //O(b)
-        }
-    -   The formula would be O(a+b)
+-   The formula would be O(a+b)
 
 2.  Drop constants. Remember that the point of Big-O Notation is to find how the algorithm scales, not how it deals with data of a specific size.
 
-    -   Example:
+function minMax1(array){
+min, max <= Null
 
-        -   function minMax1(array){
-            min, max <= Null
+     foreach(e in array){
+         min = MIN(e, min)
+     }
 
-                for each e in array
-                    min = MIN(e, min)
-                for each e in array
-                    max = MAX(e, array)
+     foreach(e in array){
+         max = MAX(e, array)
+     }
 
-            }
+}
 
-        -   function minMax2(array){
-            min, max <= Null
-            for each e in array
-            min = MIN(e, array)
-            max= MAX(e, array)
-            }
-        -   Both of these functions do exactly the same thing (although in a slightly different way). They are both O(n). While it is tempting to write the second function as O(2n), this is WRONG. We drop the constant so it would be O(n). We do not write O(2n) or O(3n), it is always O(n) because Big-O only cares about how it scales, not how many times the data is being run through
+function minMax2(array){
+min, max <= Null
+foreach(e in array){
+min = MIN(e, array)
+max = MAX(e, array)
+}
+}
+
+-   Both of these functions do exactly the same thing (although in a slightly different way). They are both O(n). While it is tempting to write the second function as O(2n), this is WRONG. We drop the constant so it would be O(n). We do not write O(2n) or O(3n), it is always O(n) because Big-O only cares about how it scales, not how many times the data is being run through
 
 3.  When using different inputs use different variables. Remember that variables MUST HAVE A MEANING
 
-    -   Example:
-        -   int intersectionSize(arrayA, arrayB){
-            int count = 0
-            for a in arrayA {
-            for b in arrayB{
-            if a == b{
-            count = count + 1
-            }
-            }  
-            }
-            return count
-            }
-        -   It would be incorrect to write this as O(n^2) because n doesn't have any meaning. What is n? Which array does it go to? It should be described as O(a X b)
+const intersectionSize = (arrayA, arrayB)=>{
+let count = 0
+for(a in arrayA ) {
+for( b in arrayB){
+if( a == b){
+count = count + 1
+}
+}
+}
+return count
+}
 
-4.  Drop non-dominate terms
+It would be incorrect to write this as O(n^2) because n doesn't have any meaning. What is n? Which array does it go to? It should be described as O(a X b)
+
+4.  Drop non-dominate terms of n
+    const whyWouldIDoThis = (array) => {
+    max = Null
+
+    -   O(n) example
+
+foreach(a in array){
+max = Math.max(a, max)
+}
+print max
+
+-   O(n^2) example
+    foreach a in array{
+    foreach b in array{
+    print a, b
+    }
+    }
+    }
+
+-   This example could be described as => O(n + n^2), but should be described as O(n^2)
+-   If you compare this runtime to O(n ^ 2) and O(n ^ 2 + n ^ 2), both of these run times can reduce to O(n^2). O(n + n^2) fits logically between them => O(n^2) =< O(n + n^2) =< O(n^2 + n^2). Since (n^2) is larger, we will drop the O(n+n^2)
