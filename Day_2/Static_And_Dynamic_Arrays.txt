@@ -1,0 +1,32 @@
+https://www.youtube.com/watch?v=RBSGKlAvoiM
+
+-   A STATIC array is a fixed length, indexed(usually zeroed) data structure.
+
+-   When and where are static arrays used
+
+    -   Storing and accessing sequential data
+    -   Temporarily storing objects(most common)
+    -   Used by IO(input/output) routines as buffers
+    -   Lookup tables and inverse lookup tables
+    -   Can be used to return multiple values from a functions
+    -   Used in dynamic programming to cache answers to subproblems
+
+-   Complexity / Big-O Notation Processing Time
+    -   Accessing: Constant because arrays are indexed
+        -   Static: O(1) ==> Big-O Constant
+        -   Dynamic: O(1) ==> Big-O Constant
+    -   Search: Linear because it is directly related to the size of the array
+        -   Static: O(1) ==> Big-O Linear
+        -   Dynamic: O(1) ==> Big-O Linear
+    -   Insertion:
+        -   Static: N/A ==> Static arrays are fixed in size
+        -   Dynamic: O(1) ==> Big-O Linear
+            -   All indexed values would shift, then be recopied at their new indexes. Therefore its linear
+    -   Appending
+        -   Static: N/A ==> Static arrays are fixed in size
+        -   Dynamic: O(1) ==> Big-O Constant
+            -   Constant because it doesn't happen very often???
+    -   Deletion
+        -   Static: N/A ==> Static arrays are fixed in size
+        -   Dynamic: O(1) ==> Big-O Linear
+            -   All indexed values would shift, then be recopied at their new indexes. Therefore its linear
