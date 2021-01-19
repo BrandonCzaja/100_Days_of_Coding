@@ -63,25 +63,31 @@ Examples:
 // Logarithmic Time (AKA Binary Search): O(log(n))
 ////////////////////////////////////////////////////
 /*
-    - Suppose I have a sorted array and I want to find the index of a particular value in the array, if it exists. What is the time complexity of the following algorithm?
+    - Example: 
+        - Suppose I have a sorted array and I want to find the index of a particular value in the array, if it exists. What is the time complexity of the following algorithm?
 
-    //Create variables for the ends of the array
-    low = 0
-    high = n-1
+        //Create variables for the ends of the array
+        low = 0
+        high = n-1
 
-    // Create another variable for the middle index of the array
-    mid = (low + high) / 2
+        While low <= high Do
 
-    // If mid equals the desired value, return it. Otherwise if mid is less than the desired value, cut the array in half and make the low end variable equal (mid + 1) to represent the new lowest index. If mid is greater than the desired value cut the array in half in the other direction and reassign the high variable (mid - 1) to represent the new highest index
-    if array[mid] == value: return mid
-    Else If array[mid] < value: low = mid + 1
-    Else If array[mid] > value: hi = mid - 1
+        // Create another variable for the middle index of the array
+        mid = (low + high) / 2
 
-    // If the value is not in the array return the default response
-    return -1
+        // If mid equals the desired value, return it. Otherwise if mid is less than the desired value, cut the array in half and make the low end variable equal (mid + 1) to represent the new lowest index. If mid is greater than the desired value cut the array in half in the other direction and reassign the high variable (mid - 1) to represent the new highest index
+        if array[mid] == value: return mid
+        Else If array[mid] < value: low = mid + 1
+        Else If array[mid] > value: hi = mid - 1
 
-    - Answer: O(log2(2)) => O(log(n)) => Logarithmic Time
-    - This is a really fast way to do a binary search of an array because each time the algorithm runs, half of the array is discarded unless the desired value is found
+        // If the value is not in the array return the default response
+        return -1
+
+        - Answer: O(log2(2)) ==> O(log(n)) ==> Logarithmic Time
+        - This is a really fast way to do a binary search of an array because each time the algorithm runs, half of the array is discarded unless the desired value is found
+
+
+
 
 */
 
@@ -107,5 +113,19 @@ Examples:
         - (n) + (n-1)  - The first (n) is the outer loop, and the (n-1) is the second loop
         - (n) + (n-2)
         - etc
-        - The equation for this is n(n+1)/2. In Big-O => O(n(n+1)/2) => O(n^2/2 + n/2) => O(n^2) => Quadratic Time
+        - The equation for this is n(n+1)/2. In Big-O ==> O(n(n+1)/2) ==> O(n^2/2 + n/2) ==> O(n^2) ==> Quadratic Time
+
+
+    - Example:
+        i = 0
+        While i < n Do
+            j = 0
+            While j < 3*n Do
+                j = j + 1
+            j = 0
+            While j < 2*n Do
+                j = j + 1
+            i = i + 1
+
+        f(n) = n * (3n + 2n) = 5n^2 ==> O(f(n)) ==> O(n^2) ==> Quadratic Time
 */
