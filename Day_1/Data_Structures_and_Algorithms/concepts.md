@@ -36,7 +36,7 @@
 
 -   The time and space required to complete the algorithm is the same no matter the size of the data
 
-#### Logarithmic Time: O(log(n))
+#### Logarithmic Time (AKA Binary Search): O(log(n))
 
 #### Linear Time: O(n)
 
