@@ -60,16 +60,27 @@ Examples:
 */
 
 ////////////////////////
-// Quadric Time: O(N^2)
+// Quadratic Time: O(n^2)
 ///////////////////////
 
 /*
     for(i = 0; i < n; i = i + 1)
     for(j = 0; j < n; j = j + 1)
+    - f(n) = n*n = n^2
+    - O(f(n)) = O(f(n^2))
+    - This is Quadratic because (n) work is done twice, therefore (n*n) = n^2 = O(n^2)
     
-
+    for(i = 0; i < n; i = i + 1)
+    for(j = i; j < n; j = j + 1)
+    - In the outer loop, i will loop (n) times so i is directly related to the size of (n)
+        - i = 0 => i does (n) work
+        - i = 1 => i does (n-1) work
+        - i = 2 => i does (n-2) work
+        - etc
+    - So for the inner loop it would look like this
+        - (n) + (n-1)  - The first (n) is the outer loop, and the (n-1) is the second loop
+        - (n) + (n-2)
+        - etc
+        - The equation for this is n(n+1)/2. In Big-O => O(n(n+1)/2) => O(n^2/2 + n/2) => O(n^2) => Quadratic Time
 
 */
-
-// This will loop through the array and print pair values: (2,5) and (5,2)
-// This will be O(N^2) because the array has N number of elements and it prints N^2 pairs (each pair twice, once as x,y and once as y,x)
