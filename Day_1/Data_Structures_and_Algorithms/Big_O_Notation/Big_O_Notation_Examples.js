@@ -76,6 +76,7 @@ Examples:
         mid = (low + high) / 2
 
         // If mid equals the desired value, return it. Otherwise if mid is less than the desired value, cut the array in half and make the low end variable equal (mid + 1) to represent the new lowest index. If mid is greater than the desired value cut the array in half in the other direction and reassign the high variable (mid - 1) to represent the new highest index
+        
         if array[mid] == value: return mid
         Else If array[mid] < value: low = mid + 1
         Else If array[mid] > value: hi = mid - 1
